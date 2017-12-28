@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.admin.foresquareapp.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarMain"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom">
+
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:clickable="true"
+                android:padding="8dp"
+                android:src="@android:drawable/ic_search_category_default" />
+
+            <EditText
+                android:id="@+id/search_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/margin_et_text"
+                android:layout_toEndOf="@+id/search"
+                android:layout_toStartOf="@+id/cancel"
+                android:text=""
+                android:textColor="@color/icons" />
+
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/search_text"
+                android:layout_toStartOf="@+id/filter"
+                android:clickable="true"
+                app:srcCompat="@android:drawable/btn_dialog" />
+
+            <ImageView
+                android:id="@+id/filter"
+                android:layout_width="@dimen/image_toolbar_size"
+                android:layout_height="@dimen/image_toolbar_size"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/cancel"
+                android:layout_marginEnd="15dp"
+                android:clickable="true"
+                android:src="@drawable/filter" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ViewFlipper
+        android:id="@+id/view_flipper_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+        android:id="@+id/no_info_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center_horizontal"
+        android:text="@string/input_city_name"
+        android:textSize="@dimen/choose_place_size"
+        android:textStyle="italic" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+        </RelativeLayout>
+
+        <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/no_internet_connection" />
+
+    </ViewFlipper>
+
+</RelativeLayout>

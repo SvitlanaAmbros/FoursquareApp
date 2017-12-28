@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.admin.foresquareapp.PlaceInfoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarMain"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom">
+
+            <ImageView
+                android:id="@+id/img_back_pl"
+                android:layout_width="@dimen/image_arrow_toolbar_size"
+                android:layout_height="@dimen/image_arrow_toolbar_size"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:clickable="true"
+                app:srcCompat="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/tv_place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="13dp"
+                android:layout_toEndOf="@+id/img_back_pl"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/filter_text_size"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="60dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbarMain"
+        android:orientation="vertical"
+        android:weightSum="4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/img_section"
+            android:background="@drawable/border_item">
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/description_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_item">
+
+            <TextView
+                android:id="@+id/tv_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorAccent"
+                android:paddingLeft="@dimen/rate_padding"
+                android:paddingRight="@dimen/rate_padding"
+                android:text="7.6" />
+
+            <TextView
+                android:id="@+id/tv_place_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_rate"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="11dp"
+                android:text="Place"
+                android:textSize="@dimen/place_title_margin"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_place_title"
+                android:layout_below="@+id/tv_place_title"
+                android:text="TextView"
+                android:textSize="@dimen/place_title_margin"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/like_section"
+            android:background="@drawable/border_item">
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/like_likes"
+            android:background="@drawable/border_item">
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
