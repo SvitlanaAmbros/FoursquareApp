@@ -1,6 +1,7 @@
 package com.example.admin.foresquareapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,9 @@ public class PlaceInfoActivity extends AppCompatActivity implements View.OnClick
     @BindView(R.id.tv_description)
     TextView tvDescription;
 
+    @BindView(R.id.tv_rate_pl)
+    TextView tvRate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,10 @@ public class PlaceInfoActivity extends AppCompatActivity implements View.OnClick
     public void setPlaceData(Bundle data) {
         tvPlaceName.setText(data.getString("title"));
         tvPlaceNameBlock.setText(data.getString("title"));
+
         tvDescription.setText(data.getString("description"));
+
+        tvRate.setText(String.valueOf(data.getDouble("rate")));
+        tvRate.setBackgroundColor(Color.parseColor("#" + data.getString("colorRate")));
     }
 }

@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Admin on 22.12.2017.
  */
 
-public class MainPresenterImpl implements MainPresenter, ServerResponseListener, MainInfoPlaceLoadListener, AddInfoPlaceLoaderListener, BtnSortChangedListener {
+public class MainPresenterImpl implements MainPresenter, ServerResponseListener, MainInfoPlaceLoadListener, AddInfoPlaceLoaderListener {
     private MainView mainView;
     private ServerRequestBuilder serverRequestBuilder;
     private int position = 0;
@@ -138,20 +138,20 @@ public class MainPresenterImpl implements MainPresenter, ServerResponseListener,
         return placeInfo;
     }
 
-    @Override
-    public void changeSortingByChanged() {
-        if(App.getInstance().getMainModel().getDefaultBtnSortBy() == R.id.btn_rel){
-            mainView.createListPlace(App.getInstance().getMainModel().getPlaceInfoList(),
-                    App.getInstance().getMainModel().getAdditionalPlaceInfoList());
-        }else{
-            List<Place> sortedListPlace = sortListByDistance(App.getInstance().getMainModel().getPlaceInfoList());
-
-            List<PlaceInfo> sortedListAdditionalInfo = sortListAdditionalInfo(sortedListPlace,
-                    App.getInstance().getMainModel().getAdditionalPlaceInfoList());
-
-            mainView.createListPlace(sortedListPlace, sortedListAdditionalInfo);
-        }
-    }
+//    @Override
+//    public void changeSortingByChanged() {
+//        if(App.getInstance().getMainModel().getDefaultBtnSortBy() == R.id.btn_rel){
+//            mainView.createListPlace(App.getInstance().getMainModel().getPlaceInfoList(),
+//                    App.getInstance().getMainModel().getAdditionalPlaceInfoList());
+//        }else{
+//            List<Place> sortedListPlace = sortListByDistance(App.getInstance().getMainModel().getPlaceInfoList());
+//
+//            List<PlaceInfo> sortedListAdditionalInfo = sortListAdditionalInfo(sortedListPlace,
+//                    App.getInstance().getMainModel().getAdditionalPlaceInfoList());
+//
+//            mainView.createListPlace(sortedListPlace, sortedListAdditionalInfo);
+//        }
+//    }
 
 
 }

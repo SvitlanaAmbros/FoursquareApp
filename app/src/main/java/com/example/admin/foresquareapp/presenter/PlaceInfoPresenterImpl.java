@@ -31,6 +31,8 @@ public class PlaceInfoPresenterImpl implements PlaceInfoPresenter {
         Bundle item = new Bundle();
         item.putString("title", title);
         item.putString("description", App.getInstance().getMainModel().getAdditionalPlaceInfoList().get(ind).getDescription());
+        item.putDouble("rate", App.getInstance().getMainModel().getAdditionalPlaceInfoList().get(ind).getRating());
+        item.putString("colorRate", App.getInstance().getMainModel().getAdditionalPlaceInfoList().get(ind).getRatingColor());
         placeInfoView.setPlaceData(item);
     }
 }
