@@ -12,5 +12,6 @@
     <dimen name="reset_text_size">20dp</dimen>
     <dimen name="text_sorted_margin">10dp</dimen>
     <dimen name="choose_place_size">24sp</dimen>
-
+    <dimen name="like_img_size">50dp</dimen>
+    <dimen name="best_image_size">100dp</dimen>
 </resources>

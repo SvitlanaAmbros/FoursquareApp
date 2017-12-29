@@ -75,6 +75,17 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
 
         viewFlipper.setDisplayedChild(0);
 
+        searchText.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    Toast.makeText(MainActivity.this, "!!", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         initializaComponentToolbar();
         createNetworkReceiver();
 
@@ -117,17 +128,6 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
         search.setOnClickListener(this);
         filter.setOnClickListener(this);
 
-        searchText.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (i == KeyEvent.KEYCODE_ENTER)) {
-                    Toast.makeText(MainActivity.this, "!!!", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override

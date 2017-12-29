@@ -16,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize">
@@ -29,6 +33,11 @@
             android:name=".FilterActivity"
             android:configChanges="orientation|screenSize" />
         <activity android:name=".PlaceInfoActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCbg7W92rhdEauF0jKC-ll0KK8hBdTlAhI"/>
+
     </application>
 
 </manifest>

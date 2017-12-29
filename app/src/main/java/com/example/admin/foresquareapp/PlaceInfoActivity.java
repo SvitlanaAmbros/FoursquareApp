@@ -4,21 +4,28 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.admin.foresquareapp.presenter.PlaceInfoPresenter;
 import com.example.admin.foresquareapp.presenter.PlaceInfoPresenterImpl;
 import com.example.admin.foresquareapp.view.PlaceInfoView;
-
-import org.w3c.dom.Text;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PlaceInfoActivity extends AppCompatActivity implements View.OnClickListener, PlaceInfoView{
+public class PlaceInfoActivity extends AppCompatActivity implements View.OnClickListener, PlaceInfoView, OnMapReadyCallback{
     private PlaceInfoPresenter placeInfoPresenter;
     private String id;
 
@@ -37,6 +44,15 @@ public class PlaceInfoActivity extends AppCompatActivity implements View.OnClick
     @BindView(R.id.tv_rate_pl)
     TextView tvRate;
 
+    @BindView(R.id.tv_address)
+    TextView tvAddress;
+
+    @BindView(R.id.tv_count_likes)
+    TextView tvLikes;
+
+    @BindView(R.id.img_best_photo)
+    ImageView bestPhoto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +64,12 @@ public class PlaceInfoActivity extends AppCompatActivity implements View.OnClick
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
 
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
         placeInfoPresenter = new PlaceInfoPresenterImpl(this);
         placeInfoPresenter.setInfoAboutPlace(id);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -66,12 +85,42 @@ public class PlaceInfoActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void setPlaceData(Bundle data) {
+        tvDescription.setMovementMethod(new ScrollingMovementMethod());
+
         tvPlaceName.setText(data.getString("title"));
         tvPlaceNameBlock.setText(data.getString("title"));
 
         tvDescription.setText(data.getString("description"));
 
         tvRate.setText(String.valueOf(data.getDouble("rate")));
-        tvRate.setBackgroundColor(Color.parseColor("#" + data.getString("colorRate")));
+
+        if ( data.getString("colorRate") != null) {
+            tvRate.setBackgroundColor(Color.parseColor("#" + data.getString("colorRate")));
+        }
+        tvAddress.setText(String.valueOf(data.getString("address")));
+
+        tvLikes.setText(String.valueOf(data.getInt("likes")));
+
+        String imgURL = data.getString("imgpref") +
+                "100" +
+                data.getString("imgsuf");
+
+        Glide.with(this)
+                .load(imgURL)
+                .centerCrop()
+                .crossFade()
+                .placeholder(R.drawable.load) // Place holder image
+                .error(R.drawable.no_image) // On error image
+                .into(bestPhoto);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        Bundle location = placeInfoPresenter.getLocation(id);
+
+        LatLng sydney = new LatLng(location.getDouble("lat"), location.getDouble("lng"));
+        googleMap.addMarker(new MarkerOptions().position(sydney)
+                .title("Marker"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

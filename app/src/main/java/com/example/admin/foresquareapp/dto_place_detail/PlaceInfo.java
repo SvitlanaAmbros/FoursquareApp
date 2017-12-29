@@ -10,6 +10,8 @@ public class PlaceInfo {
     private double rating;
     private String ratingColor;
     private String description;
+    private Likes likes;
+    private BestPhoto bestPhoto;
 
     public String getDescription() {
         return description;
@@ -51,4 +53,19 @@ public class PlaceInfo {
         this.price = price;
     }
 
+    public Likes getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Likes likes) {
+        this.likes = likes;
+    }
+
+    public BestPhoto getBestPhoto() {
+        return bestPhoto;
+    }
+
+    public void setBestPhoto(BestPhoto bestPhoto) {
+        this.bestPhoto = bestPhoto;
+    }
 }

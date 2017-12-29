@@ -61,7 +61,6 @@ public class FilterActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()){
             case R.id.img_back:
                 Intent intent = new Intent();
-
                 intent.putExtra("sort", filterPresenter.getValueSortBy());
                 setResult(RESULT_OK, intent);
                 finish();
