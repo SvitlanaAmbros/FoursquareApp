@@ -53,6 +53,8 @@ public class RVPlaceAdapter extends RecyclerView.Adapter<RVPlaceAdapter.PlaceVie
 
         Glide.with(context)
                 .load(imgURL)
+                .error(R.drawable.no_image)
+                .placeholder(R.drawable.load)
                 .into(holder.imgPlace);
 
         holder.tvNamePlace.setText(listPlace.get(position).getName());
