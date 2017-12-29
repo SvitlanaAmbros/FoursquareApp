@@ -75,17 +75,6 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
 
         viewFlipper.setDisplayedChild(0);
 
-        searchText.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    Toast.makeText(MainActivity.this, "!!", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                return false;
-            }
-        });
-
         initializaComponentToolbar();
         createNetworkReceiver();
 
@@ -101,12 +90,11 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
                 searchText.setText("");
                 break;
             case R.id.filter:
-//                Toast.makeText(this, "New activity", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, FilterActivity.class);
                 startActivityForResult(intent, 1);
                 break;
             case R.id.search:
-//                Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
+                viewFlipper.setDisplayedChild(3);
                 sendBroadcast();
 
                 location = findCurrentCoordinates();
@@ -127,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
         cancel.setOnClickListener(this);
         search.setOnClickListener(this);
         filter.setOnClickListener(this);
-
     }
 
     @Override
@@ -151,14 +138,6 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
         IntentFilter intentFilter = new IntentFilter(App.getInstance().BROADCAST_ACTION);
         registerReceiver(networkReceiver, intentFilter);
     }
-
-//    @Override
-//    public void updateRecyclerViewPlace(List<Place> response, List<PlaceInfo> additionalResponse) {
-//        RVPlaceAdapter rvPlaceAdapter = new RVPlaceAdapter(response, additionalResponse);
-//        rvPlace.setAdapter(rvPlaceAdapter);
-//        rvPlaceAdapter.notifyDataSetChanged();
-//    }
-
 
     public Location findCurrentCoordinates() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -188,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
                 break;
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

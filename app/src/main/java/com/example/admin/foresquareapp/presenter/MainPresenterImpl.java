@@ -106,7 +106,6 @@ public class MainPresenterImpl implements MainPresenter, ServerResponseListener,
         Collections.sort(placeInfoListForSorting, new Comparator<Place>() {
             @Override
             public int compare(Place pInfo, Place nInfo) {
-                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
                 return pInfo.getLocation().getDistance() > nInfo.getLocation().getDistance() ? 1 :
                         (pInfo.getLocation().getDistance() < nInfo.getLocation().getDistance()) ? -1 : 0;
             }
