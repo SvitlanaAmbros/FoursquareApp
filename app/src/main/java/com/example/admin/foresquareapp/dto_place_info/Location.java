@@ -7,6 +7,8 @@ package com.example.admin.foresquareapp.dto_place_info;
 public class Location {
     private String address;
     private double distance;
+    private double lat;
+    private double lng;
 
     public String getAddress() {
         return address;
@@ -22,6 +24,22 @@ public class Location {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }
 
