@@ -9,5 +9,5 @@
     <string name="wifi_connection">WIFI is connected</string>
     <string name="internet_connection">Interned is connected</string>
     <string name="no_internet_connection">No Internet connection</string>
-    <string name="input_city_name">Input city name</string>
+    <string name="input_city_name">Input place and click on magnifier</string>
 </resources>
