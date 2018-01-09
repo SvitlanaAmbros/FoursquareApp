@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.admin.foresquareapp.PlaceInfoActivity">
+    tools:context="com.example.admin.foursquareapp.PlaceInfoActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarMain"
@@ -127,7 +127,7 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
-                tools:context="com.example.admin.foresquareapp.PlaceInfoActivity" />
+                tools:context="com.example.admin.foursquareapp.PlaceInfoActivity" />
         </RelativeLayout>
 
         <RelativeLayout
